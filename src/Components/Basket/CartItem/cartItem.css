@@ -1,0 +1,19 @@
+
+.cartItem{
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.cartItemImg{
+    width: 100%;
+    height:  100%;
+    object-fit: contain;
+}
+
+.cartItemRating{
+    color: #FFA41C;
+}
+
+.removeCartBtn{
+    height: 40px !important;
+}

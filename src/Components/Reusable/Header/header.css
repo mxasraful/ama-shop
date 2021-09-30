@@ -1,0 +1,61 @@
+.headerMain {
+    background-color: #131921 !important;
+}
+
+.header_container {
+    width: 95% !important;
+    display: flex;
+    margin: 0 auto;
+}
+
+.headerLogoImg {
+    width: 100%;
+}
+
+.headerSearch .headerSearchInput {
+    width: 85%;
+    margin-top: 3px;
+    padding: 2px 5px;
+    border: none;
+    border-radius: 2px 0 2px 0;
+}
+
+.headerSearch .headerSearchSubmit {
+    width: 5%;
+    border: none !important;
+    background: #F3A847;
+    color: #fff;
+    padding: 2px 0;
+    border-radius: 0 2px 2px 0;
+}
+
+.headerAuthSection {
+    display: flex;
+}
+
+.headerAuthSection a {
+    text-decoration: none !important;
+    text-align: left !important;
+}
+
+.headerCart svg {
+    margin-top: 10px;
+}
+
+.headerSignIn{
+    cursor: pointer;
+    position: relative;
+}
+
+.headerSignOutDropdown {
+    position: fixed;
+    top: 50px;
+    left: 99999999px;
+    z-index: 10;
+    width: 400px;
+}
+
+.headerSignIn:hover .headerSignOutDropdown {
+    left: 800px !important;
+    cursor: default;
+}

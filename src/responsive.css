@@ -1,0 +1,177 @@
+/*		Tablet Layout: 768px.
+            Gutters: 24px.
+            Outer margins: 28px.
+            Inherits styles from: Default Layout.
+    -----------------------------------------------------------------
+    cols    1     2      3      4      5      6      7      8
+    px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .signInContainer {
+        width: 33%;
+        margin: 0 auto;
+    }
+    /* Banner section css */
+    .carousel-item img {
+        width: 154%!important;
+        margin-left: -27%;
+    }
+    /* Css for header */
+    .headerLogoSection {
+        width: 35%;
+    }
+    .headerLogoImg {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        margin-left: 10px !important;
+        width: 57% !important;
+    }
+    .headerSearchSection, .headerOrder, .headerSignIn {
+        display: none;
+    }
+    .headerAuthSection {
+        width: 65%;
+    }
+    .headerCart {
+        margin-left: 83%;
+        margin-top: 7px;
+    }
+    .headerCart span{
+        top: 8px !important;
+    }
+    /* Product details page */
+    .pdDetailsImg {
+        height: auto;
+        padding: 10px;
+        width: 100%;
+    }
+    /*  */
+    .productsCategoriesFilterSection{
+        display: none !important;
+    }
+}
+
+/*		Mobile Layout: 320px.
+            Gutters: 24px.
+            Outer margins: 34px.
+            Inherits styles from: Default Layout.
+    ---------------------------------------------
+    cols    1     2      3
+    px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+    /* Sign in page css */
+    .signInContainer {
+        width: 65%;
+        margin: 0 auto;
+    }
+    /* Banner section css */
+    .bannerMain {
+        height: 135px;
+    }
+    .carousel-item img {
+        width: 145%!important;
+        margin-left: -22.5%;
+    }
+    /* Css for product details page */
+    .pdDetailsAddCartBtn {
+        display: none;
+    }
+    .mobileAddCartBtn {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    .pdDetailTitle {
+        display: none;
+    }
+    .mobilePdDetailTitle {
+        display: block !important;
+    }
+    /* Css for header */
+    .headerLogoSection {
+        width: 35%;
+    }
+    .headerLogoImg {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        margin-left: 10px !important;
+        width: 80% !important;
+    }
+    .headerSearchSection, .headerOrder, .headerSignIn {
+        display: none;
+    }
+    .headerAuthSection {
+        width: 65%;
+    }
+    .headerCart {
+        margin-left: 83%;
+        margin-top: 7px;
+    }
+    .headerCart span{
+        top: 8px !important;
+    }
+    /* Cart Item Css */
+    .cartItemTextSection .h5 {
+        font-size: 13px !important;
+    }
+    .cartItemPrice h4 {
+        font-size: 16px !important;
+    }
+    .cartItemQty {
+        width: 100px;
+        height: 27px;
+        margin-top: 19px !important;
+    }
+    .cartItemQtyValue {
+        width: 30px !important;
+        padding: 0px !important;
+    }
+    .removeCartBtn {
+        display: none !important;
+    }
+    .cartItemWithoutTitle {
+        display: flex;
+    }
+    .mobileRemoveCartBtn {
+        display: block !important;
+    }
+    .cartItemRatingAndPrice {
+        margin-right: 30px;
+    }
+    .cartItemQtyAndBtn {
+        margin-right: 30px;
+    }
+    .categorizedViewingBtn{
+        margin-left: 3% !important;
+    }
+    /* Checkout Page Css */
+    .checkoutOrderBtn {
+        width: 100%;
+    }
+    /*  */
+    .productsCategoriesFilterSection{
+        display: none !important;
+    }
+}
+
+/*		Wide Mobile Layout: 480px.
+            Gutters: 24px.
+            Outer margins: 22px.
+            Inherits styles from: Default Layout, Mobile Layout.
+    ------------------------------------------------------------
+    cols    1     2      3      4      5
+    px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .signInContainer {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+/*	Retina media query.
+        Overrides styles for devices with a 
+        device-pixel-ratio of 2+, such as iPhone 4.
+    -----------------------------------------------    */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {}

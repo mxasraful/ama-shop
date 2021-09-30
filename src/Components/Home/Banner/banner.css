@@ -1,0 +1,8 @@
+.bannerMain{
+    height: 250px;
+}
+
+.bannerMain .carousel-item img{
+    mask-image: linear-gradient(rgba(0, 0, 0, 1.0), rgba(0, 0, 0, 1.0), transparent);
+    -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1.0), rgba(0, 0, 0, 1.0), transparent);
+}

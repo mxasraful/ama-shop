@@ -1,0 +1,18 @@
+.productItem{
+    margin-bottom: 20px;
+}
+
+.productImg{
+    height: 300px;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.productOvRatting{
+    color: rgb(255, 200, 129);
+}
+/* 
+.productAddToCartBtn{
+    width: 100px !important;
+    height: 30px !important;
+} */

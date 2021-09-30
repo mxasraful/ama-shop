@@ -1,0 +1,6 @@
+.address-item{
+    display: flex !important;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    cursor: pointer;
+}

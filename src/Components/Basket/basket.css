@@ -1,0 +1,18 @@
+.cartMain {
+    /* display: flex; */
+    padding: 20px;
+    background-color: #EAEDED;
+}
+
+.cartItems {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    margin: 0 0 14px 0;
+}
+
+.cartCheckout {
+    border-radius: 5px;
+    background: #fff;
+    padding: 20px !important;
+}

@@ -1,0 +1,90 @@
+/* css for all */
+.button{
+    background-color: #FEBD69 !important;
+    border: 1px solid #aaa !important;
+    border-radius: 3px !important;
+    padding: 5px 30px !important;
+}
+
+.button:hover{
+    background-color: #f7a842;
+    border: 1px solid #aaa;
+}
+
+.button:focus{
+    background-color: #f7a842;
+    border: 1px solid #e49400 !important;
+    box-shadow: 0 0 5px 2px #FEBD69 !important;
+}
+
+.bg-green{
+    background: #62a208 !important;
+}
+
+/* Quantity section style for all */
+.cartItemQty{
+    width: 200px;
+    display: flex !important;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 219, 219);
+    width: 120px;
+}
+
+.cartItemQtyValue{
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    border-right: 1px solid rgb(219, 219, 219);
+    border-left: 1px solid rgb(219, 219, 219);
+}
+
+.cartItemQtyChangeBtn{
+    border: none !important;
+    background-color: rgb(247, 247, 247);
+    padding: 0 10px;
+    transition: 0.5s !important;
+    color: rgb(65, 65, 65);
+}
+
+.cartItemQtyChangeBtn:active{
+    background-color: rgb(233, 233, 233);
+    color: rgb(48, 48, 48);
+}
+
+.cartItemQtyChangeBtn:focus{
+    background-color: rgb(233, 233, 233);
+    color: rgb(48, 48, 48);
+}
+
+/* Style For Responsive Page */
+
+.mobileAddToCart{
+    display: none;
+}
+
+.mobilePdDetailTitle{
+    display: none;
+}
+
+.mobileAddCartBtn{
+    display: none;
+}
+
+.headerCart{
+    width: 40px !important;
+}
+
+.headerCart svg{
+    position: relative;
+}
+
+.headerCart span{
+    position: absolute;
+    top: 2px;
+    margin-left: 10px;
+    color: #F08804;
+}
+
+.mobileRemoveCartBtn{
+    display: none;
+}
