@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import spinner from '../../../logo/ellipsis.svg';
@@ -12,9 +13,9 @@ const ProductsByCategories = () => {
     const { pdsCate } = useParams()
 
     useEffect(() => {
-        fetch(`https://peaceful-plateau-99403.herokuapp.com/products/${pdsCate}`)
-            .then(res => res.json())
-            .then(data => {
+        axios(`/products/${pdsCate}`)
+        .then(res => {
+            const data = res.data
                 setPdsData(data)
                 setPageLoader(false)
             })

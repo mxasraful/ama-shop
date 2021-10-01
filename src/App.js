@@ -22,6 +22,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import PrivateRoute from './Components/Reusable/PrivateRoute/PrivateRoute';
 import jwtDecode from "jwt-decode";
 import Search from './Components/Search/Search';
+import Orders from './Components/Orders/Orders';
 
 const promise = loadStripe("pk_test_51IdfRoF1fXyFzjChI92Hjve7nRNhNen4D35kH4kxQCJ3KHWY8jEPPN05nmjIhCNyCdBjYA0euNJx9RyPau1PDv7F00B0qN62u5")
 
@@ -82,6 +83,10 @@ function App() {
             <Route path="/search">
               <Header />
               <Search />
+            </Route>
+            <Route path="/user/orders">
+              <Header />
+              <Orders />
             </Route>
             <Route path="/products/:pdsCate">
               <Header />

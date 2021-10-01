@@ -79,13 +79,12 @@ const Checkout = () => {
             setDeliveryAddressErr(true)
         }
     }
-    
+
     // get all country list in array
     useEffect(() => {
-        fetch('https://api.dhsprogram.com/rest/dhs/countries')
-            .then(res => res.json())
+        axios('https://api.dhsprogram.com/rest/dhs/countries')
             .then(data => {
-                setAllCountryList(data.Data)
+                setAllCountryList(data.data.Data)
             })
     }, [])
 

@@ -18,9 +18,10 @@ const AddAddress = ({ setAllAddresses, setAddAddressError, setAddAddressErrorMsg
         setAddressAddLoading(true)
         data.userId = user.userId
         data.email = user.email
-        fetch(`https://peaceful-plateau-99403.herokuapp.com/get-delivery-address?userId=${user.userId}`)
-            .then(res => res.json())
-            .then(dt => {
+        axios(`/get-delivery-address?userId=${user.userId}`)
+        .then(res => {
+            const data = res.data
+            const dt = res.data
                 setAllAddresses(dt)
                 if (dt.find(dt => dt === data)) {
                     setAddAddressError(true)
@@ -42,9 +43,9 @@ const AddAddress = ({ setAllAddresses, setAddAddressError, setAddAddressErrorMsg
 
     // Get all delivery existingDeliveryAddresses
     useEffect(() => {
-        fetch(`https://peaceful-plateau-99403.herokuapp.com/get-delivery-address?userId=${user.userId}`)
-            .then(res => res.json())
-            .then(data => {
+        axios(`/get-delivery-address?userId=${user.userId}`)
+        .then(res => {
+            const data = res.data
                 if (data?.length > 0) {
                     setAllAddresses(data)
                 } else {

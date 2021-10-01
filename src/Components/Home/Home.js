@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Products from '../Products/Products';
 import Loader from '../Reusable/Loader/Loader';
@@ -13,9 +14,9 @@ const Home = () => {
     const [bfpProduct, setBfpProduct] = useState(null)
 
     useEffect(() => {
-        fetch("https://peaceful-plateau-99403.herokuapp.com/products")
-            .then(res => res.json())
-            .then(data => {
+        axios("/products")
+            .then(res => {
+                var data = res.data
                 data = data.sort(() => Math.random() - 0.5)
                 setProductsData(data)
                 categoryLaptopProducts()
@@ -28,18 +29,18 @@ const Home = () => {
     }, [productsData])
 
     const categoryLaptopMobile = () => {
-        fetch("https://peaceful-plateau-99403.herokuapp.com/products/mobile")
-            .then(res => res.json())
-            .then(data => {
+        axios("/products/mobile")
+            .then(res => {
+                var data = res.data
                 data = data.sort(() => Math.random() - 0.7)
                 setMobileProducts(data.splice(0, 3))
             })
     }
 
     const categoryLaptopProducts = () => {
-        fetch("https://peaceful-plateau-99403.herokuapp.com/products/laptop")
-            .then(res => res.json())
-            .then(data => {
+        axios("/products/laptop")
+            .then(res => {
+                var data = res.data
                 data = data.sort(() => Math.random() - 0.5)
                 setLaptopProducts(data.splice(0, 3))
             })

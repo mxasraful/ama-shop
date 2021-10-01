@@ -27,7 +27,7 @@ const Product = (props) => {
     }
 
     return (
-        <div className="productItem card">
+        <div className="productItem card mb-5">
             <div class="card-body">
                 <Link to={`/product/${category}/${id}`} className="text-dark"><h6 class="card-title text-left">{title}</h6></Link>
                 <h5>$ <strong> {props?.pd?.price?.length === 1 ? props?.pd?.price : props?.pd?.price?.length > 1 ? props?.pd?.price[0] : props?.pd?.price}.98</strong></h5>

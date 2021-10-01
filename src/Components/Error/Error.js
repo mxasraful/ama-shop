@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Error = () => {
     return (
-        <div className="errorPageMain">
+        <div className="errorPageMain" style={{marginBottom: "55.6vh"}}>
             <div className="container">
                 <div className="alert alert-danger mt-5 text-center">
                     <br />

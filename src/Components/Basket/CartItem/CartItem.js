@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus, faStar, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './cartItem.css';
-import { useStateValue } from '../../StateProvider/StateProvider';
 import { Link } from 'react-router-dom';
 import Loader from '../../Reusable/Loader/Loader';
+import axios from 'axios';
 
 const CartItem = ({ pd, removeItem }) => {
-
-    const [{ }, dispatch] = useStateValue()
 
     const [itemDetail, setItemDetail] = useState({})
 
@@ -19,9 +17,9 @@ const CartItem = ({ pd, removeItem }) => {
 
     // Get data from database
     useEffect(() => {
-        fetch(`https://peaceful-plateau-99403.herokuapp.com/product/${pd.id}`)
-            .then(res => res.json())
-            .then(data => {
+        axios(`/product/${pd.id}`)
+        .then(res => {
+            const data = res.data
                 data.variant = data.variant[pd.variant]
                 setQty(pd.qty)
                 setItemDetail(data)
@@ -29,25 +27,6 @@ const CartItem = ({ pd, removeItem }) => {
             })
     }, [pd])
 
-    const qtyMinus = (value) => {
-        pd.qty = pd.qty - value
-        dispatch({
-            type: "MINUS_CART_ITEM_QTY",
-            id: pd.id,
-            qty: pd.qty,
-            price: itemDetail.price
-        })
-    }
-
-    const qtyPlus = (value) => {
-        pd.qty = pd.qty + value
-        dispatch({
-            type: "PLUS_CART_ITEM_QTY",
-            id: pd.id,
-            qty: pd.qty,
-            price: itemDetail.price
-        })
-    }
 
     return (
         <div className="cartItem row">

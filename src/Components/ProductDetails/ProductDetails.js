@@ -1,6 +1,7 @@
 import { faMinus, faPlus, faShoppingCart, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@material-ui/core';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Loader from '../Reusable/Loader/Loader';
@@ -20,7 +21,7 @@ const ProductDetails = () => {
     const [qty, setQty] = useState(1)
 
     // Get context api data
-    const [{ cart }, dispatch] = useStateValue()
+    const [, dispatch] = useStateValue()
 
     // Get params data
     const { pdCate } = useParams()
@@ -29,9 +30,9 @@ const ProductDetails = () => {
     // Get data from database
     useEffect(() => {
         if (pdCate && pdId) {
-            fetch(`https://peaceful-plateau-99403.herokuapp.com/product/${pdCate}/${pdId}`)
-                .then(res => res.json())
-                .then(data => {
+            axios(`/product/${pdCate}/${pdId}`)
+            .then(res => {
+                const data = res.data
                     setPdDetails(data)
                     setPdFImg(data.imgs[0])
                     setPdVariant(data.variant)
@@ -86,7 +87,7 @@ const ProductDetails = () => {
                     :
                     <>
                         <br />
-                        <div className="productDetailsMain">
+                        <div className="productDetailsMain mb-5">
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-5">
