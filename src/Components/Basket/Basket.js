@@ -22,7 +22,6 @@ const Basket = () => {
             type: "REMOVE_FROM_CART",
             id: id,
         })
-        // window.location.reload()
     }
 
     document.title = "Asrafuls Amazon - Cart"
