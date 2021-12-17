@@ -5,7 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './header.css';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../StateProvider/StateProvider';
-import useAuth from '../../SignIn/useAuth';
+import useAuth from '../../SignIn/Auth';
 import { Button } from '@material-ui/core';
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
 
     const [{ cart, user },] = useStateValue()
 
-    const { signOut } = useAuth()
+    const { authSignOut } = useAuth()
 
     // Handle Search Items
     const searchItems = (e) => {
@@ -32,13 +32,16 @@ const Header = () => {
                         <img className="headerLogoImg mt-2" src={logo} alt="" />
                     </Link>
                 </div>
-                <div className="headerSearchSection col-8">
-                    <form onSubmit={searchItems} className="headerSearch mt-2 text-center">
+                <div className="headerSearchSection col-8 d-flex">
+                    <form onSubmit={searchItems} className="headerSearch mt-2 text-center" style={{ width: "85%" }}>
                         <input type="text" className="headerSearchInput" onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Your Product..." />
                         <button type="submit" className="headerSearchSubmit" >
                             <FontAwesomeIcon icon={faSearch} />
                         </button>
                     </form>
+                    <div className="headerAdminBtn mt-2 me-4" style={{ width: "15%" }}>
+                        <a href="/admin"><Button className='px-4' variant="outlined" color="secondary">Admin</Button></a>
+                    </div>
                 </div>
                 <div className="headerAuthSection col-3">
                     {
@@ -51,7 +54,7 @@ const Header = () => {
                                         <div className="card-body">
                                             <span className="h6 mb-3 text-dark">Do you want to remove your account from this website?</span><br />
                                             <div className="text-center">
-                                                <Button onClick={signOut} className="button">Sign Out</Button>
+                                                <Button onClick={authSignOut} className="button">Sign Out</Button>
                                             </div>
                                         </div>
                                     </div>

@@ -135,7 +135,7 @@ const ProductDetails = () => {
                                             pdVariant?.length === 1 ?
                                                 <div className="productDetailVariant">
                                                     <h6 className="">Variant:
-                                                        <span className="pdDetailsVariantItemOne h5 badge bg-green text-wrap"> {pdVariant[0]}</span>
+                                                        <span className="pdDetailsVariantItemOne h5 badge text-wrap active-button ms-3"> {pdVariant[0]}</span>
                                                     </h6>
                                                 </div>
                                                 : pdVariant?.length > 1 ?
@@ -144,7 +144,7 @@ const ProductDetails = () => {
                                                         {
                                                             pdVariant?.map(pd =>
                                                                 <>
-                                                                    <button onClick={() => setVariantDataInPrice(pd)} className="pdDetailsVariantItem badge bg-green text-wrap btn">{pd}</button><br />
+                                                                    <button onClick={() => setVariantDataInPrice(pd)} className={pdVariant.indexOf(pd) === selectedVariantIndex ? "active-button pdDetailsVariantItem badge text-wrap btn mb-2":"pdDetailsVariantItem badge bg-green text-wrap btn mb-2" }>{pd}</button><br />
                                                                 </>
                                                             )
                                                         }

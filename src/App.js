@@ -11,7 +11,6 @@ import SignIn from './Components/SignIn/SignIn';
 import Footer from './Components/Reusable/Footer/Footer';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import './responsive.css';
-import { auth } from './firebase.config';
 import { useStateValue } from './Components/StateProvider/StateProvider';
 import { useEffect } from 'react';
 import Checkout from './Components/Checkout/Checkout';
@@ -23,6 +22,9 @@ import PrivateRoute from './Components/Reusable/PrivateRoute/PrivateRoute';
 import jwtDecode from "jwt-decode";
 import Search from './Components/Search/Search';
 import Orders from './Components/Orders/Orders';
+import Admin from './Components/Admin/Admin';
+import AdminHeader from './Components/Admin/AdminHeader/AdminHeader';
+import AdminHome from './Components/Admin/AdminHome/AdminHome';
 
 const promise = loadStripe("pk_test_51IdfRoF1fXyFzjChI92Hjve7nRNhNen4D35kH4kxQCJ3KHWY8jEPPN05nmjIhCNyCdBjYA0euNJx9RyPau1PDv7F00B0qN62u5")
 
@@ -50,7 +52,7 @@ function App() {
         user: null
       })
     }
-  }, [auth, dispatch])
+  }, [dispatch])
 
   // store cart items in localStorage
   useEffect(() => {
@@ -65,7 +67,7 @@ function App() {
     // BEM
     <div className="App">
       <Router>
-        <div>
+        <div className='page'>
           <Switch>
             <Route path="/login">
               <SignIn />
@@ -95,6 +97,15 @@ function App() {
             <Route path="/product/:pdCate/:pdId">
               <Header />
               <ProductDetails />
+            </Route>
+            <Route path="/admin">
+              <AdminHeader />
+              <Route exact path="/admin">
+                <AdminHome />
+              </Route>
+              <Route exact path="/admin/mx">
+                <h2>MX</h2>
+              </Route>
             </Route>
             <Route exact path="/">
               <Header />

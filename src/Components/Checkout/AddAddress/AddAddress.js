@@ -19,9 +19,8 @@ const AddAddress = ({ setAllAddresses, setAddAddressError, setAddAddressErrorMsg
         data.userId = user.userId
         data.email = user.email
         axios(`/get-delivery-address?userId=${user.userId}`)
-        .then(res => {
-            const data = res.data
-            const dt = res.data
+            .then(res => {
+                const dt = res.data
                 setAllAddresses(dt)
                 if (dt.find(dt => dt === data)) {
                     setAddAddressError(true)
@@ -42,20 +41,18 @@ const AddAddress = ({ setAllAddresses, setAddAddressError, setAddAddressErrorMsg
     }
 
     // Get all delivery existingDeliveryAddresses
-    useEffect(() => {
-        axios(`/get-delivery-address?userId=${user.userId}`)
+    axios(`/get-delivery-address?userId=${user.userId}`)
         .then(res => {
             const data = res.data
-                if (data?.length > 0) {
-                    setAllAddresses(data)
-                } else {
+            if (data?.length > 0) {
+                setAllAddresses(data)
+            } else {
 
-                }
-            })
-            .catch(error => {
-                setAllAddresses(null)
-            })
-    }, [user, addressAddLoading])
+            }
+        })
+        .catch(error => {
+            setAllAddresses(null)
+        })
 
     // set default add res
     useEffect(() => {

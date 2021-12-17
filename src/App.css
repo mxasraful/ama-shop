@@ -1,28 +1,38 @@
 /* css for all */
-.button{
+.button {
     background-color: #FEBD69 !important;
     border: 1px solid #aaa !important;
     border-radius: 3px !important;
     padding: 5px 30px !important;
 }
 
-.button:hover{
+.button:hover {
     background-color: #f7a842;
     border: 1px solid #aaa;
 }
 
-.button:focus{
+.button:focus {
     background-color: #f7a842;
     border: 1px solid #e49400 !important;
     box-shadow: 0 0 5px 2px #FEBD69 !important;
 }
 
-.bg-green{
+.active-button {
+    color: #000 !important;
+    background: #febd69 !important;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%) !important;
+}
+
+.bg-green {
     background: #62a208 !important;
 }
 
+.page {
+    min-height: 93vh !important;
+}
+
 /* Quantity section style for all */
-.cartItemQty{
+.cartItemQty {
     width: 200px;
     display: flex !important;
     margin-top: 10px;
@@ -30,7 +40,7 @@
     width: 120px;
 }
 
-.cartItemQtyValue{
+.cartItemQtyValue {
     width: 50px;
     text-align: center;
     padding: 5px;
@@ -38,7 +48,7 @@
     border-left: 1px solid rgb(219, 219, 219);
 }
 
-.cartItemQtyChangeBtn{
+.cartItemQtyChangeBtn {
     border: none !important;
     background-color: rgb(247, 247, 247);
     padding: 0 10px;
@@ -46,45 +56,45 @@
     color: rgb(65, 65, 65);
 }
 
-.cartItemQtyChangeBtn:active{
+.cartItemQtyChangeBtn:active {
     background-color: rgb(233, 233, 233);
     color: rgb(48, 48, 48);
 }
 
-.cartItemQtyChangeBtn:focus{
+.cartItemQtyChangeBtn:focus {
     background-color: rgb(233, 233, 233);
     color: rgb(48, 48, 48);
 }
 
 /* Style For Responsive Page */
 
-.mobileAddToCart{
+.mobileAddToCart {
     display: none;
 }
 
-.mobilePdDetailTitle{
+.mobilePdDetailTitle {
     display: none;
 }
 
-.mobileAddCartBtn{
+.mobileAddCartBtn {
     display: none;
 }
 
-.headerCart{
+.headerCart {
     width: 40px !important;
 }
 
-.headerCart svg{
+.headerCart svg {
     position: relative;
 }
 
-.headerCart span{
+.headerCart span {
     position: absolute;
     top: 2px;
     margin-left: 10px;
     color: #F08804;
 }
 
-.mobileRemoveCartBtn{
+.mobileRemoveCartBtn {
     display: none;
 }

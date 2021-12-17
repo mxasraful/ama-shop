@@ -1,0 +1,41 @@
+.admin-header-nav-items > li > a{
+    padding: 8px !important;
+    border-radius: 50% !important;
+}
+
+.admin-header-nav-items > li > a:hover{
+    color: rgb(71, 71, 71) !important;
+    background-color: rgb(240, 240, 240) !important;
+}
+
+.dropdown-menu .list-group{
+    border-radius: 0 !important;
+}
+
+.dropdown-menu .list-group-item{
+    border: none;    
+    border-bottom: 1px solid #aaa !important;
+}
+
+.dropdown-menu .list-group-item:active{
+    background-color: #0D6EFD !important;
+    color: #fff !important;
+}
+
+.dropdown-menu .list-group-item:last-child{
+    border-bottom: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

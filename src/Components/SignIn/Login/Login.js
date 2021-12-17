@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { Button } from '@material-ui/core';
-import useAuth from '../useAuth';
+import useAuth from '../Auth';
 
 const Login = (props) => {
 

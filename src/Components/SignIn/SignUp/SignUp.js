@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useAuth from '../useAuth';
+import useAuth from '../Auth';
 
 const SignUp = (props) => {
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import firebase from 'firebase';
-import { auth, googleAuthProvider } from "../../firebase.config";
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import firebaseConfig from "../../firebase.config";
 import { useStateValue } from "../StateProvider/StateProvider";
 import { useHistory } from "react-router";
 
@@ -12,25 +13,33 @@ const useAuth = () => {
     const [successMsg, setSuccessMsg] = useState(null)
 
     const [, dispatch] = useStateValue()
-    
+
     const history = useHistory()
+
+    // Firebase App
+    const firebaseApp = initializeApp(firebaseConfig)
+
+    // Firebase Auth
+    const fireAuth = getAuth(firebaseApp)
+
+    // Firebase Auth Google Auth Provider    
 
     // Get search value for redirect
     const redirectPath = window.location?.search?.split('=')[1]
 
-    
-  // Filter user data form user
-  const getUser = user => {
-    const { displayName, email, photoURL, uid } = user
-    return { name: displayName, email, photo: photoURL, userId: uid }
-  }
+
+    // Filter user data form user
+    const getUser = user => {
+        const { displayName, email, photoURL, uid } = user
+        return { name: displayName, email, photo: photoURL, userId: uid }
+    }
 
 
     // Firebase password sign up
     const passSignUp = (name, email, pass) => {
-        auth.createUserWithEmailAndPassword(email, pass)
+        createUserWithEmailAndPassword(fireAuth, email, pass)
             .then(res => {
-                auth.currentUser.updateProfile({
+                fireAuth.currentUser.updateProfile({
                     displayName: name,
                 })
                     .then(result => {
@@ -50,7 +59,7 @@ const useAuth = () => {
 
     // Firebase password sign in
     const passLogin = (email, pass) => {
-        auth.signInWithEmailAndPassword(email, pass)
+        signInWithEmailAndPassword(fireAuth, email, pass)
             .then(res => {
                 setSuccessMsg("Logged In Successful..")
                 setAuthError(false)
@@ -64,7 +73,8 @@ const useAuth = () => {
 
     // Firebase Google sign in
     const gLogin = () => {
-        auth.signInWithPopup(googleAuthProvider)
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(fireAuth, provider)
             .then(res => {
                 setSuccessMsg("Google Sign In Successful..")
                 setAuthError(false)
@@ -78,8 +88,8 @@ const useAuth = () => {
     }
 
     // Firebase user sign out
-    const signOut = () => {
-        auth.signOut()
+    const authSignOut = () => {
+        signOut(fireAuth)
             .then(res => {
                 setSuccessMsg("Sign Out Successful..")
                 setAuthError(false)
@@ -94,31 +104,31 @@ const useAuth = () => {
     }
 
     const storeLoggedInUserData = () => {
-        firebase.auth().currentUser.getIdToken(true)
-        .then(function (idToken) {
-          localStorage.setItem('asrafuls-amazon-user-token', idToken)
-          dispatch({
-            type: "SET_USER",
-            user: getUser(auth.currentUser)
-          })
-        if (redirectPath) {
-            history.replace(redirectPath)
-    } else {
-            history.goBack()
+        fireAuth.currentUser.getIdToken(true)
+            .then(function (idToken) {
+                localStorage.setItem('asrafuls-amazon-user-token', idToken)
+                dispatch({
+                    type: "SET_USER",
+                    user: getUser(fireAuth.currentUser)
+                })
+                if (redirectPath) {
+                    history.replace(redirectPath)
+                } else {
+                    history.goBack()
 
-    }
-        })
-        .catch(function (error) {
+                }
+            })
+            .catch(function (error) {
 
-        });
+            });
     }
-    
+
 
     return {
         gLogin,
         passLogin,
         passSignUp,
-        signOut,
+        authSignOut,
         authError,
         authErrorMsg,
         successMsg,

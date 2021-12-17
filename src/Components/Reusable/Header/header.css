@@ -50,12 +50,12 @@
 .headerSignOutDropdown {
     position: fixed;
     top: 50px;
-    left: 99999999px;
+    left: 400%;
     z-index: 10;
     width: 400px;
 }
 
 .headerSignIn:hover .headerSignOutDropdown {
-    left: 800px !important;
+    left: 65% !important;
     cursor: default;
 }
