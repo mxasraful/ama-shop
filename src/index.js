@@ -8,7 +8,7 @@ import { initialState, reducer } from './Components/StateProvider/reducer';
 import axios from 'axios';
 
 // Set axios default url
-axios.defaults.baseURL = 'https://peaceful-plateau-99403.herokuapp.com';
+axios.defaults.baseURL = 'https://mxasraful-amazon-c.vercel.app';
 
 ReactDOM.render(
   <React.StrictMode>
