@@ -31,8 +31,8 @@ const ProductDetails = () => {
     useEffect(() => {
         if (pdCate && pdId) {
             axios(`/product/${pdCate}/${pdId}`)
-            .then(res => {
-                const data = res.data
+                .then(res => {
+                    const data = res.data
                     setPdDetails(data)
                     setPdFImg(data.imgs[0])
                     setPdVariant(data.variant)
@@ -107,11 +107,27 @@ const ProductDetails = () => {
                                     <div className="col-md-7">
                                         <h3 className="pdDetailTitle">{pdDetails?.title}</h3><br />
                                         <h4 className="mobilePdDetailTitle mb-2">{pdDetails?.title}</h4>
-                                        {
-                                            Array(pdDetails?.rating).fill().map(() => (
-                                                <FontAwesomeIcon style={{ color: "#FFC881" }} icon={faStar} />
-                                            ))
-                                        }
+                                        <div className="">
+                                            {
+                                                pdDetails?.rating &&
+                                                <div className="d-flex">
+                                                    <div className="productOvRattingIn">
+                                                        {
+                                                            Array(pdDetails?.rating)?.fill()?.map(() => (
+                                                                <FontAwesomeIcon icon={faStar} />
+                                                            ))
+                                                        }
+                                                    </div>
+                                                    <div className="productOvRattingOut">
+                                                        {
+                                                            Array(5 - Array(pdDetails?.rating)?.fill().length).fill()?.map(() => (
+                                                                <FontAwesomeIcon icon={faStar} />
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
                                         <div className="mt-3 mb-2 d-flex">
                                             <div>
                                                 Price: <strong className="h4" style={{ color: "#C45500" }}>
@@ -144,7 +160,7 @@ const ProductDetails = () => {
                                                         {
                                                             pdVariant?.map(pd =>
                                                                 <>
-                                                                    <button onClick={() => setVariantDataInPrice(pd)} className={pdVariant.indexOf(pd) === selectedVariantIndex ? "active-button pdDetailsVariantItem badge text-wrap btn mb-2":"pdDetailsVariantItem badge bg-green text-wrap btn mb-2" }>{pd}</button><br />
+                                                                    <button onClick={() => setVariantDataInPrice(pd)} className={pdVariant.indexOf(pd) === selectedVariantIndex ? "active-button pdDetailsVariantItem badge text-wrap btn mb-2" : "pdDetailsVariantItem badge bg-green text-wrap btn mb-2"}>{pd}</button><br />
                                                                 </>
                                                             )
                                                         }

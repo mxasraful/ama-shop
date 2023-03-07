@@ -31,12 +31,25 @@ const Product = (props) => {
             <div class="card-body">
                 <Link to={`/product/${category}/${id}`} className="text-dark"><h6 class="card-title text-left">{title}</h6></Link>
                 <h5>$ <strong> {props?.pd?.price?.length === 1 ? props?.pd?.price : props?.pd?.price?.length > 1 ? props?.pd?.price[0] : props?.pd?.price}.98</strong></h5>
-                <div className="text-center productOvRatting">
+                <div className="d-flex justify-content-center productOvRatting">
                     {
                         rating &&
-                        Array(rating)?.fill()?.map(() => (
-                            <FontAwesomeIcon icon={faStar} />
-                        ))
+                            <div className="d-flex">
+                                <div className="productOvRattingIn">
+                                    {
+                                        Array(rating)?.fill()?.map(() => (
+                                            <FontAwesomeIcon icon={faStar} />
+                                        ))
+                                    }
+                                </div>
+                                <div className="productOvRattingOut">
+                                    {
+                                        Array(5 - Array(rating)?.fill().length).fill()?.map(() => (
+                                            <FontAwesomeIcon icon={faStar} />
+                                        ))
+                                    }
+                                </div>
+                            </div>
                     }
                 </div>
                 <Link to={`/product/${category}/${id}`} className="text-dark">

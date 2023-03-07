@@ -8,8 +8,11 @@
     object-fit: contain;
 }
 
-.productOvRatting{
+.productOvRattingIn{
     color: rgb(255, 200, 129);
+}
+.productOvRattingOut{
+    color: rgb(100, 100, 100);
 }
 /* 
 .productAddToCartBtn{
