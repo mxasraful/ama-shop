@@ -8,7 +8,7 @@ import { initialState, reducer } from './Components/StateProvider/reducer';
 import axios from 'axios';
 
 // Set axios default url
-axios.defaults.baseURL = 'https://mxasraful-amazon-c.vercel.app';
+axios.defaults.baseURL = 'https://mxamazon.up.railway.app';
 
 ReactDOM.render(
   <React.StrictMode>
