@@ -26,6 +26,8 @@ const Basket = () => {
 
     document.title = "Asrafuls Amazon - Cart"
 
+    console.log(cart)
+
     return (
         <div className="cartMain container-fluid" >
             <div className="container h-100">

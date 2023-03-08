@@ -45,10 +45,10 @@
     top: 50px;
     left: 400%;
     z-index: 10;
-    width: 400px;
+    width: 250px;
 }
 
 .headerSignIn:hover .headerSignOutDropdown {
-    left: 65% !important;
+    left: 70% !important;
     cursor: default;
 }

@@ -35,11 +35,10 @@
     }
 
     .headerAuthSection {
-        width: 120px !important;
+        width: 200px !important;
     }
 
     .headerCart {
-        margin-left: 20px;
         margin-top: 7px;
     }
 
@@ -117,12 +116,11 @@
     }
 
     .headerCart {
-        margin-left: 20px;
         margin-top: 7px;
     }
 
     .headerAuthSection {
-        width: 120px !important;
+        width: 200px !important;
     }
 
     /* Cart Item Css */
@@ -177,6 +175,12 @@
     /*  */
     .productsCategoriesFilterSection {
         display: none !important;
+    }
+
+
+    .headerSignIn:hover .headerSignOutDropdown {
+        left: 50% !important;
+        cursor: default;
     }
 }
 
