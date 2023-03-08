@@ -96,11 +96,11 @@ const Checkout = () => {
                     <div className="checkoutOrderSuccessMsg">
                         {
                             ordSuccessesErr ?
-                                <div className="alert alert-danger px-3 py-3 w-25 text-center" style={{ margin: "40vh auto" }}>
+                                <div className="order-successful-message alert alert-danger px-3 py-3 w-25 text-center" style={{ margin: "40vh auto" }}>
                                     <h6>{ordSuccessesErr}.</h6>
                                 </div>
                                 :
-                                <div className="alert alert-success px-3 py-3 w-25 text-center" style={{ margin: "40vh auto" }}>
+                                <div className="order-successful-message alert alert-success px-3 py-3 w-25 text-center" style={{ margin: "40vh auto" }}>
                                     <h5>Order Successful.</h5>
                                     <br /><br />
                                     <a href="/"><Button className="button">Continue Shopping</Button></a>
@@ -155,7 +155,7 @@ const Checkout = () => {
                                                                 paymentOption={paymentOption}
                                                                 paySuccess={paySuccess}
                                                             />
-                                                            <div className="mt-4 text-center">
+                                                            <div className="my-4 text-center">
                                                                 <Button onClick={placeOrder} className="button checkoutOrderBtn w-75 " disabled={paymentOk || paySuccess ? null : "disabled"}>Place Order</Button>
                                                             </div>
                                                         </div>

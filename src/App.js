@@ -23,8 +23,6 @@ import jwtDecode from "jwt-decode";
 import Search from './Components/Search/Search';
 import Orders from './Components/Orders/Orders';
 import Admin from './Components/Admin/Admin';
-import AdminHeader from './Components/Admin/AdminHeader/AdminHeader';
-import AdminHome from './Components/Admin/AdminHome/AdminHome';
 
 const promise = loadStripe("pk_test_51IdfRoF1fXyFzjChI92Hjve7nRNhNen4D35kH4kxQCJ3KHWY8jEPPN05nmjIhCNyCdBjYA0euNJx9RyPau1PDv7F00B0qN62u5")
 
@@ -99,13 +97,7 @@ function App() {
               <ProductDetails />
             </Route>
             <Route path="/admin">
-              <AdminHeader />
-              <Route exact path="/admin">
-                <AdminHome />
-              </Route>
-              <Route exact path="/admin/mx">
-                <h2>MX</h2>
-              </Route>
+              <Admin />
             </Route>
             <Route exact path="/">
               <Header />

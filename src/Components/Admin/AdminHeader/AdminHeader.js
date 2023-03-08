@@ -8,9 +8,9 @@ const AdminHeader = () => {
         <div className='adminHeaderMain'>
             <nav class="navbar navbar-expand-lg navbar-light bg-light" style={{ background: "#e3f2fd" }}>
                 <div class="container">
-                    <a class="navbar-brand" href="/admin">
+                    <Link class="navbar-brand" to="/admin">
                         <img src="https://asrafulweb.com/static/media/AsrafulWeb.23b66f3f.png" alt="" className='img-fluid' style={{ width: "60px" }} />
-                    </a>
+                    </Link>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

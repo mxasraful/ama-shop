@@ -1,6 +1,11 @@
-.address-item{
+.address-item {
     display: flex !important;
     flex-wrap: nowrap;
     flex-direction: row;
     cursor: pointer;
+}
+
+.order-successful-message {
+    margin: 20vh auto;
+    width: 300px !important;
 }

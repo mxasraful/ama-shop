@@ -51,9 +51,11 @@ const Header = () => {
                                 <FontAwesomeIcon icon={faSearch} />
                             </button>
                         </form>
-                        {/* <div className="headerAdminBtn mt-2 me-4" style={{ width: "15%" }}>
-                            <a href="/admin"><Button className='px-4' variant="outlined" color="secondary">Admin</Button></a>
-                        </div> */}
+                        {
+                            <div className="headerAdminBtn mt-2 me-4" style={{ width: "15%" }}>
+                                <a href="/admin"><Button className='px-4' variant="outlined" color="secondary">Admin</Button></a>
+                            </div>
+                        }
                     </div>
                     <div className="headerAuthSection d-flex col-2 ms-auto justify-content-end">
                         {
