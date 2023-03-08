@@ -55,10 +55,10 @@ const Header = () => {
                             <a href="/admin"><Button className='px-4' variant="outlined" color="secondary">Admin</Button></a>
                         </div> */}
                     </div>
-                    <div className="headerAuthSection col-3">
+                    <div className="headerAuthSection d-flex col-2 ms-auto justify-content-end">
                         {
                             user ?
-                                <div className="headerSignIn text-light col-6 mt-3">
+                                <div className="headerSignIn text-light col-6 mt-2">
                                     <h6>Hello <b>{user?.name}</b></h6>
                                     <div className="headerSignOutDropdown">
                                         <div className="card">
@@ -72,10 +72,10 @@ const Header = () => {
                                     </div>
                                 </div>
                                 :
-                                <Link to="/login" className="headerSignIn text-light col-6 mt-2 ">
+                                <Link to="/login" className="headerSignIn text-light col-6 mt-3">
                                     <h6>Sign in</h6>
                                 </Link>
-                        }3
+                        }
                         <Link to='/user/cart' className="headerCart text-light mt-2">
                             <button type="button" class="btn btn-sm text-light position-relative">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -91,6 +91,19 @@ const Header = () => {
                         </Link>
                     </div>
                 </div>
+            </div>
+            <div className="headerSearchForMobile d-flex">
+                <form onSubmit={searchItems} className="headerSearch container mt-1 text-center py-3">
+                    <input type="text" className="headerSearchInput" onChange={(e) => setSearchValue(e.target.value)} value={searchValue} placeholder="Search Your Product..." />
+                    <button type="submit" className="headerSearchSubmit px-3 w-auto" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-search mb-1" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </form>
+                {/* <div className="headerAdminBtn mt-2 me-4" style={{ width: "15%" }}>
+                            <a href="/admin"><Button className='px-4' variant="outlined" color="secondary">Admin</Button></a>
+                        </div> */}
             </div>
         </div>
     );

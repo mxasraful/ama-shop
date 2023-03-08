@@ -39,7 +39,7 @@ const Basket = () => {
                             </div>
                         </div>
                     }
-                    <div className="col-sm-9">
+                    <div className="col-lg-9">
                         <div className="cartItems" id="allCartItems">
                             {
                                 user &&
@@ -73,17 +73,9 @@ const Basket = () => {
                                     />
                                 )
                             }
-                            {
-                                cart?.length < 1 &&
-                                <div style={{ height: '40vh' }}></div>
-                            }
-                            {
-                                cart.length === 1 &&
-                                <div style={{ height: '24vh' }}></div>
-                            }
                         </div>
                     </div>
-                    <div className="col-sm-3">
+                    <div className="col-lg-3">
                         <CurrencyFormat
                             renderText={(value) => (
                                 <div className="cartCheckout">
