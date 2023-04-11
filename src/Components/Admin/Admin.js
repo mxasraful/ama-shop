@@ -1,13 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useStateValue } from '../StateProvider/StateProvider';
 import AdminHeader from './AdminHeader/AdminHeader';
+import AdminProducts from './AdminProducts/AdminProducts';
 
 const Admin = () => {
 
     const [adminTrue, setAdminTrue] = useState()
 
     const [{ user }, dispatch] = useStateValue()
+
+
+    const pathname = useParams()?.section
 
     // 
     useEffect(() => {
@@ -19,10 +24,19 @@ const Admin = () => {
 
     return (
         <div className="admin-page-main">
-            {
-                // user?.find(it => {})
-            }
             <AdminHeader />
+            {
+                pathname === "products" ?
+                    <AdminProducts />
+                    :
+                    pathname === "orders" ?
+                        "Orders"
+                        :
+                        pathname === "users" ?
+                            "users"
+                            :
+                            "Home"
+            }
         </div>
     );
 };

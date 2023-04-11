@@ -41,7 +41,7 @@ const ProductDetails = () => {
                     setSelectedVariantIndex(0)
                 })
         }
-    }, [])
+    }, [pdCate, pdId])
 
     // Set variant price in price state
     const setVariantDataInPrice = (variantDt) => {
@@ -177,30 +177,23 @@ const ProductDetails = () => {
                                                 pdDetails.featuresTitle?.length <= 2 ?
                                                     ""
                                                     :
-                                                    <h5>About this product</h5>
+                                                    <h5>Specifications</h5>
                                             }
-                                            <div className="d-flex">
-                                                <div className="productDetailsAboutLeft">
+                                            <table class="table  table-bordered">
+                                                <tbody>
                                                     {
                                                         pdDetails.featuresTitle?.length <= 2 ?
                                                             ""
                                                             :
                                                             pdDetails.featuresTitle?.map(pd =>
-                                                                <li className="">{pd} </li>
+                                                                <tr>
+                                                                    <td>{pd}</td>
+                                                                    <td>{pdDetails.featuresValue[pdDetails.featuresTitle.indexOf(pd)]} </td>
+                                                                </tr>
                                                             )
                                                     }
-                                                </div>
-                                                <div className="productDetailsAboutRight">
-                                                    {
-                                                        pdDetails?.featuresValue?.length <= 2 ?
-                                                            ""
-                                                            :
-                                                            pdDetails.featuresValue?.map(pd =>
-                                                                <li className=""> <strong>:</strong> {pd}</li>
-                                                            )
-                                                    }
-                                                </div>
-                                            </div>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

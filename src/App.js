@@ -12,7 +12,7 @@ import Footer from './Components/Reusable/Footer/Footer';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import './responsive.css';
 import { useStateValue } from './Components/StateProvider/StateProvider';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Checkout from './Components/Checkout/Checkout';
 import Error from './Components/Error/Error';
 import ProductsByCategories from './Components/Home/ProductsByCategories/ProductsByCategories';
@@ -23,12 +23,29 @@ import jwtDecode from "jwt-decode";
 import Search from './Components/Search/Search';
 import Orders from './Components/Orders/Orders';
 import Admin from './Components/Admin/Admin';
+import axios from 'axios';
 
 const promise = loadStripe("pk_test_51IdfRoF1fXyFzjChI92Hjve7nRNhNen4D35kH4kxQCJ3KHWY8jEPPN05nmjIhCNyCdBjYA0euNJx9RyPau1PDv7F00B0qN62u5")
 
 function App() {
+  const [isAdminStataus, setIsAdminStataus] = useState(false)
 
   const [{ cart }, dispatch] = useStateValue()
+
+
+  // Find Admin From Server
+  const handleFindAdmin = (email) => {
+    if (email) {
+      axios.post('/admin/check', {
+          email: email
+      })
+        .then(res => {
+          setIsAdminStataus(res.data === true ? true : false)
+        })
+        .catch(error => setIsAdminStataus(false))
+    }
+  }
+
 
   // Filter user data form user
   const getUserForStoredUser = user => {
@@ -40,17 +57,25 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('asrafuls-amazon-user-token')) {
       const storedUser = jwtDecode(localStorage.getItem('asrafuls-amazon-user-token'))
+      handleFindAdmin(storedUser.email)
+      console.log(isAdminStataus)
       dispatch({
         type: "SET_USER",
         user: getUserForStoredUser(storedUser)
       })
+      if (isAdminStataus) {
+        dispatch({
+          type: "SET_ADMIN",
+          isAdmin: isAdminStataus === true ? true : false
+        })
+      }
     } else {
       dispatch({
         type: "SET_USER",
         user: null
       })
     }
-  }, [dispatch])
+  }, [dispatch, isAdminStataus])
 
   // store cart items in localStorage
   useEffect(() => {
@@ -84,10 +109,10 @@ function App() {
               <Header />
               <Search />
             </Route>
-            <Route path="/user/orders">
+            <PrivateRoute path="/user/orders">
               <Header />
               <Orders />
-            </Route>
+            </PrivateRoute>
             <Route path="/products/:pdsCate">
               <Header />
               <ProductsByCategories />
@@ -95,6 +120,9 @@ function App() {
             <Route path="/product/:pdCate/:pdId">
               <Header />
               <ProductDetails />
+            </Route>
+            <Route path="/admin/:section">
+              <Admin />
             </Route>
             <Route path="/admin">
               <Admin />

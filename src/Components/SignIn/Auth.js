@@ -4,13 +4,15 @@ import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWith
 import firebaseConfig from "../../firebase.config";
 import { useStateValue } from "../StateProvider/StateProvider";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 const useAuth = () => {
 
     const [authError, setAuthError] = useState(false)
-    const [authErrorMsg, setAuthErrorMsg] = useState('')
+    const [authErrorMsg, setAuthErrorMsg] = useState(null)
 
     const [successMsg, setSuccessMsg] = useState(null)
+    const [isAdminStataus, setIsAdminStataus] = useState(false)
 
     const [, dispatch] = useStateValue()
 
@@ -34,6 +36,23 @@ const useAuth = () => {
         return { name: displayName, email, photo: photoURL, userId: uid }
     }
 
+    // Find Admin From Server
+    const handleFindAdmin = (email) => {
+        if (email) {
+            axios.post('/admin/check', {
+                email: email
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => {
+                    setIsAdminStataus(res.data === true ? true : false)
+                })
+                .catch(error => setIsAdminStataus(false))
+        }
+    }
+
 
     // Firebase password sign up
     const passSignUp = (name, email, pass) => {
@@ -45,7 +64,7 @@ const useAuth = () => {
                     .then(result => {
                         setSuccessMsg("Account Created Successful..")
                         setAuthError(false)
-                        setAuthErrorMsg("")
+                        setAuthErrorMsg(null)
                     })
                     .catch(err => {
 
@@ -63,7 +82,7 @@ const useAuth = () => {
             .then(res => {
                 setSuccessMsg("Logged In Successful..")
                 setAuthError(false)
-                setAuthErrorMsg("")
+                setAuthErrorMsg(null)
             })
             .catch(err => {
                 setAuthError(true)
@@ -78,8 +97,9 @@ const useAuth = () => {
             .then(res => {
                 setSuccessMsg("Google Sign In Successful..")
                 setAuthError(false)
-                setAuthErrorMsg("")
+                setAuthErrorMsg(null)
                 storeLoggedInUserData()
+                handleFindAdmin(res.user.email)
             })
             .catch(err => {
                 setAuthError(true)
@@ -93,7 +113,7 @@ const useAuth = () => {
             .then(res => {
                 setSuccessMsg("Sign Out Successful..")
                 setAuthError(false)
-                setAuthErrorMsg("")
+                setAuthErrorMsg(null)
                 localStorage.removeItem('asrafuls-amazon-user-token')
                 window.location.reload()
             })
@@ -109,19 +129,21 @@ const useAuth = () => {
                 localStorage.setItem('asrafuls-amazon-user-token', idToken)
                 dispatch({
                     type: "SET_USER",
-                    user: getUser(fireAuth.currentUser)
+                    user: getUser(fireAuth.currentUser),
+                    isAdmin: isAdminStataus === true ? true : false
                 })
                 if (redirectPath) {
                     history.replace(redirectPath)
                 } else {
                     history.goBack()
-
                 }
             })
             .catch(function (error) {
 
             });
     }
+
+    console.log(isAdminStataus)
 
 
     return {

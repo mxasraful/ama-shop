@@ -12,7 +12,7 @@ const Header = () => {
 
     const [searchValue, setSearchValue] = useState(null)
 
-    const [{ cart, user },] = useStateValue()
+    const [{ cart, user, isAdmin },] = useStateValue()
 
     const { authSignOut } = useAuth()
 
@@ -26,7 +26,6 @@ const Header = () => {
         }
     }
 
-    console.log()
 
     // Set Search Input Value
     useEffect(() => {
@@ -34,6 +33,8 @@ const Header = () => {
             setSearchValue(searchQuery)
         }
     }, [searchQuery])
+
+    console.log(useStateValue())
 
     return (
         <div className='headerMain'>
@@ -51,30 +52,37 @@ const Header = () => {
                                 <FontAwesomeIcon icon={faSearch} />
                             </button>
                         </form>
-                        {
-                            <div className="headerAdminBtn mt-2 me-4" style={{ width: "15%" }}>
-                                <a href="/admin"><Button className='px-4' variant="outlined" color="secondary">Admin</Button></a>
-                            </div>
-                        }
                     </div>
-                    <div className="headerAuthSection d-flex col-2 ms-auto justify-content-end">
+                    <div className="headerAuthSection d-flex col-3 ms-auto justify-content-end">
                         {
                             user ?
-                                <div className="headerSignIn text-light col-6 mt-2">
+                                <div className="headerSignIn text-light ms-auto mt-2">
                                     <h6>Hello <b>{user?.name}</b></h6>
                                     <div className="headerSignOutDropdown">
                                         <div className="card">
                                             <div className="card-body">
-                                                <small className="mb-3 text-dark">Do you want to remove your account from this website?</small><br /><br />
+                                                <small className="mb-3 text-dark">Options</small><br />
+                                                {
+                                                    isAdmin &&
+                                                    <Link to="/admin" className="text-center">
+                                                        <Button className="button w-100 mb-2 mt-2">Admin</Button>
+                                                    </Link>
+                                                }
+                                                <Link to="/user/profile" className="text-center">
+                                                    <Button className="button w-100 mb-2">My Profile</Button>
+                                                </Link><br />
+                                                <Link to="/user/orders" className="text-center">
+                                                    <Button className="button w-100 mb-2">My Orders</Button>
+                                                </Link><br />
                                                 <div className="text-center">
-                                                    <Button onClick={authSignOut} className="button">Sign Out</Button>
+                                                    <Button onClick={authSignOut} className="button w-100">Sign Out</Button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 :
-                                <Link to="/login" className="headerSignIn text-light col-6 mt-3">
+                                <Link to="/login" className="headerSignIn text-light ms-auto mt-2 pe-3">
                                     <h6>Sign in</h6>
                                 </Link>
                         }

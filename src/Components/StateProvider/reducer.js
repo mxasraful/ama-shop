@@ -1,7 +1,8 @@
 
 export const initialState = {
     cart: [],
-    user: null
+    user: null,
+    isAdmin: false,
 }
 
 export const getCartTotal = (cart) => cart?.reduce((amount, item) => item.price + amount, 0)
@@ -72,6 +73,11 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 user: action.user
+            }
+        case "SET_ADMIN":
+            return {
+                ...state, 
+                isAdmin: action.isAdmin
             }
 
         default:

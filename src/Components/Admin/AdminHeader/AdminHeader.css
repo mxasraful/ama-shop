@@ -3,10 +3,6 @@
     border-radius: 50% !important;
 }
 
-.admin-header-nav-items > li > a:hover{
-    color: rgb(71, 71, 71) !important;
-    background-color: rgb(240, 240, 240) !important;
-}
 
 .dropdown-menu .list-group{
     border-radius: 0 !important;

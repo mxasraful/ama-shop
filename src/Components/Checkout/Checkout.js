@@ -4,10 +4,11 @@ import { getCartTotal } from '../StateProvider/reducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import './checkout.css'
 import Loader from '../Reusable/Loader/Loader';
 import PaymentOption from './PaymentOption/PaymentOption';
 import AddAddress from './AddAddress/AddAddress';
+import { v4 as uuidv4 } from 'uuid';
+import './checkout.css'
 
 const Checkout = () => {
 
@@ -45,6 +46,21 @@ const Checkout = () => {
         getUsersSecret()
     }, [cart])
 
+
+    // Check Order Id
+    const checkOrderId = (id) => {
+        if (id) {
+            axios.post('/order-id/check', {
+                id: id
+            })
+                .then(res => {
+                    return (res.data === true ? true : false)
+                })
+                .catch(error => true)
+        }
+    }
+
+
     // Place Order
     const placeOrder = () => {
         if (allAddresses) {
@@ -63,7 +79,10 @@ const Checkout = () => {
                 paymentId: paymentId(),
                 paymentStatus: "success",
                 status: 'processing',
-                addressItem: selectedAddress
+                addressItem: allAddresses[selectedAddress],
+                email: user.email,
+                userId: user.userId,
+                orderId: null
             }
             axios.post('/post-order', orderData)
                 .then(res => {
@@ -86,6 +105,12 @@ const Checkout = () => {
             .then(data => {
                 setAllCountryList(data.data.Data)
             })
+    }, [])
+
+
+    useEffect(() => {
+        const randomId = uuidv4().substr(0, 8);
+        console.log(randomId)
     }, [])
 
 
@@ -160,6 +185,9 @@ const Checkout = () => {
                                                             </div>
                                                         </div>
                                                     </div>
+
+
+
                                                 </>
                                                 :
                                                 <Loader />
